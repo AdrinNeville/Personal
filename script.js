@@ -1,43 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".contact-form form");
-
-    // Basic sanitizer: strips HTML tags
-    function sanitizeInput(input) {
-        return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault(); // stop default form submission
-
-        const name = form.querySelector('input[placeholder="Your Name"]').value.trim();
-        const email = form.querySelector('input[placeholder="Your Email"]').value.trim();
-        const subject = sanitizeInput(form.querySelector('input[placeholder="Subject"]').value.trim());
-        const message = sanitizeInput(form.querySelector('textarea[placeholder="Your Message"]').value.trim());
-
-        // For demo: log to console
-        console.log({
-            name: name,
-            email: email,
-            subject: subject,
-            message: message
-        });
-
-        alert("Form data captured! Check console for sanitized output.");
-    });
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
-    const nameInput = document.querySelector("#name");
-    const emailInput = document.querySelector("#email");
+    const form = document.querySelector(".contact-form form");
+    const nameInput = form.querySelector('input[placeholder="Your Name"]');
+    const emailInput = form.querySelector('input[placeholder="Your Email"]');
+    const subjectInput = form.querySelector('input[placeholder="Subject"]');
+    const messageInput = form.querySelector('textarea[placeholder="Your Message"]');
+
     const errorContainer = document.createElement("div");
     errorContainer.classList.add("error-messages");
     form.appendChild(errorContainer);
 
-    const nameRegex = /^[A-Za-z\s]{6,}$/; // Only letters/spaces, min 6
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email check
+    // Sanitizer: strips < > tags
+    const sanitizeInput = (input) => input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    // Validate fields on input
+    // Regex checks
+    const nameRegex = /^[A-Za-z\s]{6,}$/; // At least 6 letters, no numbers/symbols
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation function
     const validateField = (input, regex, errorMsg) => {
         if (!regex.test(input.value.trim())) {
             input.classList.add("invalid");
@@ -62,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         errorContainer.style.opacity = "0";
     };
 
+    // Live validation
     nameInput.addEventListener("input", () => {
         validateField(nameInput, nameRegex, "Name must be at least 6 letters, no numbers/symbols.");
     });
@@ -70,14 +50,23 @@ document.addEventListener("DOMContentLoaded", () => {
         validateField(emailInput, emailRegex, "Please enter a valid email address.");
     });
 
+    // Final submit
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+
         const nameValid = validateField(nameInput, nameRegex, "Name must be at least 6 letters.");
         const emailValid = validateField(emailInput, emailRegex, "Enter a valid email.");
-        
+
         if (nameValid && emailValid) {
-            form.classList.add("submitted");
-            alert("Form submitted successfully!");
+            const sanitizedData = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                subject: sanitizeInput(subjectInput.value.trim()),
+                message: sanitizeInput(messageInput.value.trim()),
+            };
+
+            console.log(sanitizedData);
+            alert("Form submitted successfully! Check console for sanitized data.");
         } else {
             form.classList.add("shake");
             setTimeout(() => form.classList.remove("shake"), 500);
