@@ -69,10 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
     };
 
-    // Live validation
-    nameInput.addEventListener("input", () => showErrors(validateName()));
-    emailInput.addEventListener("input", () => showErrors(validateEmail()));
-
     // Submit handler
     form.addEventListener("submit", (e) => {
         e.preventDefault();
