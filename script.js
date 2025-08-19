@@ -27,31 +27,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
+    const form = document.querySelector(".contact-form form");
 
     form.addEventListener("submit", function (e) {
         let valid = true;
 
-        // Name validation
-        const nameInput = document.getElementById("name");
+        // Name validation (letters only, min 6 characters)
+        const nameInput = form.querySelector('input[name="name"]');
         const nameValue = nameInput.value.trim();
-        const nameRegex = /^[A-Za-z]{6,}$/; // only letters, min 6
+        const nameRegex = /^[A-Za-z]{6,}$/; 
         if (!nameRegex.test(nameValue)) {
-            alert("Name must be at least 6 letters and contain only alphabets (no numbers or special characters).");
+            alert("Name must be at least 6 letters long and contain only alphabets.");
             valid = false;
         }
 
         // Email validation
-        const emailInput = document.getElementById("email");
+        const emailInput = form.querySelector('input[name="email"]');
         const emailValue = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
         if (!emailRegex.test(emailValue)) {
             alert("Please enter a valid email address.");
             valid = false;
         }
 
         if (!valid) {
-            e.preventDefault(); // prevent form submission
+            e.preventDefault(); // stop submission
         }
     });
 });
