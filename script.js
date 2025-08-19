@@ -1,63 +1,89 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector(".contact-form form");
-    const nameInput = form.querySelector('input[placeholder="Your Name"]');
-    const emailInput = form.querySelector('input[placeholder="Your Email"]');
-    const subjectInput = form.querySelector('input[placeholder="Subject"]');
-    const messageInput = form.querySelector('textarea[placeholder="Your Message"]');
+    const form = document.getElementById("contactForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("subject");
+    const messageInput = document.getElementById("message");
 
     const errorContainer = document.createElement("div");
+    errorContainer.id = "error-message";
     errorContainer.classList.add("error-messages");
     form.appendChild(errorContainer);
 
-    // Sanitizer: strips < > tags
+    // Sanitizer: strips < >
     const sanitizeInput = (input) => input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    // Regex checks
-    const nameRegex = /^[A-Za-z\s]{6,}$/; // At least 6 letters, no numbers/symbols
+    // Regex rules
+    const nameRegex = /^[A-Za-z\s]+$/; 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Validation function
-    const validateField = (input, regex, errorMsg) => {
-        if (!regex.test(input.value.trim())) {
-            input.classList.add("invalid");
-            input.classList.remove("valid");
-            showError(errorMsg);
-            return false;
+    // Validation helpers
+    const validateName = () => {
+        let errors = [];
+        if (!nameRegex.test(nameInput.value.trim())) {
+            errors.push("❌ Name must only contain letters and spaces.");
+        }
+        if (nameInput.value.trim().length < 6) {
+            errors.push("❌ Name must be at least 6 characters long.");
+        }
+        return errors;
+    };
+
+    const validateEmail = () => {
+        return emailRegex.test(emailInput.value.trim())
+            ? []
+            : ["❌ Please enter a valid email address."];
+    };
+
+    const validateSubject = () => {
+        return subjectInput.value.trim().length >= 3
+            ? []
+            : ["❌ Subject must be at least 3 characters long."];
+    };
+
+    const validateMessage = () => {
+        return messageInput.value.trim().length >= 10
+            ? []
+            : ["❌ Message must be at least 10 characters long."];
+    };
+
+    const showErrors = (errors) => {
+        if (errors.length > 0) {
+            errorContainer.innerHTML = errors.join("<br>");
+            errorContainer.style.color = "red";
+            errorContainer.style.opacity = "1";
         } else {
-            input.classList.remove("invalid");
-            input.classList.add("valid");
-            clearError();
-            return true;
+            errorContainer.innerHTML = "";
+            errorContainer.style.opacity = "0";
         }
     };
 
-    const showError = (message) => {
-        errorContainer.innerText = message;
+    const showSuccess = () => {
+        errorContainer.innerHTML = "✅ Form submitted successfully!";
+        errorContainer.style.color = "green";
         errorContainer.style.opacity = "1";
     };
 
-    const clearError = () => {
-        errorContainer.innerText = "";
-        errorContainer.style.opacity = "0";
-    };
-
     // Live validation
-    nameInput.addEventListener("input", () => {
-        validateField(nameInput, nameRegex, "Name must be at least 6 letters, no numbers/symbols.");
-    });
+    nameInput.addEventListener("input", () => showErrors(validateName()));
+    emailInput.addEventListener("input", () => showErrors(validateEmail()));
 
-    emailInput.addEventListener("input", () => {
-        validateField(emailInput, emailRegex, "Please enter a valid email address.");
-    });
-
-    // Final submit
+    // Submit handler
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const nameValid = validateField(nameInput, nameRegex, "Name must be at least 6 letters.");
-        const emailValid = validateField(emailInput, emailRegex, "Enter a valid email.");
+        let errors = [
+            ...validateName(),
+            ...validateEmail(),
+            ...validateSubject(),
+            ...validateMessage(),
+        ];
 
-        if (nameValid && emailValid) {
+        if (errors.length > 0) {
+            showErrors(errors);
+            form.classList.add("shake");
+            setTimeout(() => form.classList.remove("shake"), 500);
+        } else {
             const sanitizedData = {
                 name: nameInput.value.trim(),
                 email: emailInput.value.trim(),
@@ -66,10 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             console.log(sanitizedData);
-            alert("Form submitted successfully! Check console for sanitized data.");
-        } else {
-            form.classList.add("shake");
-            setTimeout(() => form.classList.remove("shake"), 500);
+            showSuccess();
+
+            // Reset form after success
+            form.reset();
+            [nameInput, emailInput, subjectInput, messageInput].forEach((input) =>
+                input.classList.remove("valid", "invalid")
+            );
         }
     });
 });
