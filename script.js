@@ -62,6 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
         errorContainer.innerHTML = "✅ Form submitted successfully!";
         errorContainer.style.color = "green";
         errorContainer.style.opacity = "1";
+
+        setTimeout(() => {
+            errorContainer.style.transition = "opacity 0.5s ease-out";
+            errorContainer.style.opacity = "0";
+        }, 3000);
     };
 
     // Live validation
