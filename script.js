@@ -17,54 +17,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const nameRegex = /^[A-Za-z\s]+$/; 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Validation helpers
+    // Validation functions returning FIRST error only
     const validateName = () => {
-        let errors = [];
         if (!nameRegex.test(nameInput.value.trim())) {
-            errors.push("❌ Name must only contain letters and spaces.");
+            return "❌ Name must only contain letters and spaces.";
         }
         if (nameInput.value.trim().length < 6) {
-            errors.push("❌ Name must be at least 6 characters long.");
+            return "❌ Name must be at least 6 characters long.";
         }
-        return errors;
+        return null;
     };
 
     const validateEmail = () => {
         return emailRegex.test(emailInput.value.trim())
-            ? []
-            : ["❌ Please enter a valid email address."];
+            ? null
+            : "❌ Please enter a valid email address.";
     };
 
     const validateSubject = () => {
         return subjectInput.value.trim().length >= 3
-            ? []
-            : ["❌ Subject must be at least 3 characters long."];
+            ? null
+            : "❌ Subject must be at least 3 characters long.";
     };
 
     const validateMessage = () => {
         return messageInput.value.trim().length >= 10
-            ? []
-            : ["❌ Message must be at least 10 characters long."];
+            ? null
+            : "❌ Message must be at least 10 characters long.";
     };
 
-    const showErrors = (errors) => {
-        if (errors.length > 0) {
-            errorContainer.innerHTML = errors.join("<br>");
-            errorContainer.style.color = "red";
-            errorContainer.style.opacity = "1";
-        } else {
-            errorContainer.innerHTML = "";
+    // Show error (with timeout like success)
+    const showError = (message) => {
+        errorContainer.innerHTML = message;
+        errorContainer.style.color = "red";
+        errorContainer.style.opacity = "1";
+        errorContainer.style.transition = "opacity 0.5s ease-out";
+
+        setTimeout(() => {
             errorContainer.style.opacity = "0";
-        }
+        }, 3000);
     };
 
+    // Show success
     const showSuccess = () => {
         errorContainer.innerHTML = "✅ Form submitted successfully!";
         errorContainer.style.color = "green";
         errorContainer.style.opacity = "1";
+        errorContainer.style.transition = "opacity 0.5s ease-out";
 
         setTimeout(() => {
-            errorContainer.style.transition = "opacity 0.5s ease-out";
             errorContainer.style.opacity = "0";
         }, 3000);
     };
@@ -73,15 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        let errors = [
-            ...validateName(),
-            ...validateEmail(),
-            ...validateSubject(),
-            ...validateMessage(),
-        ];
+        // Validate in order, stop at first error
+        let error = validateName() 
+                 || validateEmail() 
+                 || validateSubject() 
+                 || validateMessage();
 
-        if (errors.length > 0) {
-            showErrors(errors);
+        if (error) {
+            showError(error);
             form.classList.add("shake");
             setTimeout(() => form.classList.remove("shake"), 500);
         } else {
