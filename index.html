@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrin Neville - Full Stack Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Adrin Neville</h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Full Stack Developer</h1>
+                <h2>Turning Ideas into Digital Experiences</h2>
+                <p>I'm a Full Stack Development Intern with strong foundations in Python, MySQL, and modern web technologies. I love building scalable, user-friendly applications and transforming ideas into functional solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Images/Adrin Neville.jpg" alt="Adrin Neville">
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Get to know me better</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello! I'm Adrin Neville</h3>
+                    <p>I'm a passionate developer and current Full Stack Development Intern with a strong focus on Python, MySQL, and modern web technologies. I love creating digital solutions that balance functionality with creativity, while continuously sharpening my skills.</p>
+                    <p>Beyond coding, I’m a Chennai boy at heart who enjoys good stories and exploring how technology can shape everyday life.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h4>5+</h4>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h4>1+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h4>3</h4>
+                            <p>Hackathon Selections</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Workspace">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Skills</h2>
+                <p>Technologies I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming</h3>
+                    <p>Python, MySQL, C++, JavaScript</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="90"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Frameworks & Tools</h3>
+                    <p>React.js, Unreal Engine, Django</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="80"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <p>Teamwork, Leadership, Problem Solving</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="85"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Project</h2>
+                <p>Some of my work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Images/Pet.jpg" alt="Pet Analysis Project">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Publication</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Pet Analysis Using Cloud Computing & Web Development</h3>
+                        <p>Developed an application to manage pet healthcare, track progress, and schedule tasks. Features include live pet location monitoring and an integrated shopping platform for pet products.</p>
+                        <div class="project-tech">
+                            <span>React.js</span>
+                            <span>Kotlin</span>
+                            <span>Blynk Cloud</span>
+                            <span>IoT Hardware</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Let’s build something awesome together</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Talk</h3>
+                    <p>I'm always open to new opportunities and exciting collaborations. Whether it’s a project idea or just to connect, feel free to reach out.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h4>Email:</h4>
+                            <p>adrinneville11@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Phone:</h4>
+                            <p>+91 97909 82167</p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Location:</h4>
+                            <p>Chennai, India</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/AdrinNeville" target="_blank" class="social-link">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                        </a>
+                        <a href="https://www.linkedin.com/in/adrin-neville-216726250" target="_blank" class="social-link">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Adrin Neville. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
