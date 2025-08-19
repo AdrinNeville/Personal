@@ -26,32 +26,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".contact-form form");
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const nameInput = document.querySelector("#name");
+    const emailInput = document.querySelector("#email");
+    const errorContainer = document.createElement("div");
+    errorContainer.classList.add("error-messages");
+    form.appendChild(errorContainer);
 
-    form.addEventListener("submit", function (e) {
-        let valid = true;
+    const nameRegex = /^[A-Za-z\s]{6,}$/; // Only letters/spaces, min 6
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email check
 
-        // Name validation (letters only, min 6 characters)
-        const nameInput = form.querySelector('input[name="name"]');
-        const nameValue = nameInput.value.trim();
-        const nameRegex = /^[A-Za-z]{6,}$/; 
-        if (!nameRegex.test(nameValue)) {
-            alert("Name must be at least 6 letters long and contain only alphabets.");
-            valid = false;
+    // Validate fields on input
+    const validateField = (input, regex, errorMsg) => {
+        if (!regex.test(input.value.trim())) {
+            input.classList.add("invalid");
+            input.classList.remove("valid");
+            showError(errorMsg);
+            return false;
+        } else {
+            input.classList.remove("invalid");
+            input.classList.add("valid");
+            clearError();
+            return true;
         }
+    };
 
-        // Email validation
-        const emailInput = form.querySelector('input[name="email"]');
-        const emailValue = emailInput.value.trim();
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
-        if (!emailRegex.test(emailValue)) {
-            alert("Please enter a valid email address.");
-            valid = false;
-        }
+    const showError = (message) => {
+        errorContainer.innerText = message;
+        errorContainer.style.opacity = "1";
+    };
 
-        if (!valid) {
-            e.preventDefault(); // stop submission
+    const clearError = () => {
+        errorContainer.innerText = "";
+        errorContainer.style.opacity = "0";
+    };
+
+    nameInput.addEventListener("input", () => {
+        validateField(nameInput, nameRegex, "Name must be at least 6 letters, no numbers/symbols.");
+    });
+
+    emailInput.addEventListener("input", () => {
+        validateField(emailInput, emailRegex, "Please enter a valid email address.");
+    });
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nameValid = validateField(nameInput, nameRegex, "Name must be at least 6 letters.");
+        const emailValid = validateField(emailInput, emailRegex, "Enter a valid email.");
+        
+        if (nameValid && emailValid) {
+            form.classList.add("submitted");
+            alert("Form submitted successfully!");
+        } else {
+            form.classList.add("shake");
+            setTimeout(() => form.classList.remove("shake"), 500);
         }
     });
 });
