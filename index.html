@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Johnson - Full Stack Developer</title>
+    <meta name="description" content="Adrin Neville - Full Stack Developer specializing in Python, MySQL, and modern web technologies. Chennai-based developer with experience in React.js, Django, and IoT projects.">
+    <meta name="keywords" content="Full Stack Developer, Python, MySQL, React.js, Django, Web Development, Chennai">
+    <meta name="author" content="Adrin Neville">
+    <title>Adrin Neville - Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" id="theme-toggle">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
         <i class="fas fa-moon"></i>
     </button>
-
-    <!-- Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursor-follower"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h2>Alex Johnson</h2>
+                <h2><a href="#home" aria-label="Adrin Neville - Home">Adrin Neville</a></h2>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -31,11 +33,11 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -43,9 +45,9 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="typing-text">Full Stack Developer</h1>
-                <h2 class="fade-in-up">Creating Digital Experiences</h2>
-                <p class="fade-in-up">I'm a passionate developer who loves building beautiful, functional websites and applications that make a difference in people's lives.</p>
+                <h1 class="typing-text" role="banner">Full Stack Developer</h1>
+                <h2 class="fade-in-up">Turning Ideas into Digital Experiences</h2>
+                <p class="fade-in-up">I'm a Full Stack Development Intern with strong foundations in Python, MySQL, and modern web technologies. I love building scalable, user-friendly applications and transforming ideas into functional solutions.</p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn-primary glow-btn">View My Work</a>
                     <a href="#contact" class="btn-secondary glow-btn">Get In Touch</a>
@@ -53,18 +55,17 @@
             </div>
             <div class="hero-image">
                 <div class="image-container">
-                    <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Alex Johnson">
+                    <img src="Images/Adrin Neville.jpg" alt="Adrin Neville - Full Stack Developer" loading="lazy">
                     <div class="image-overlay"></div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" id="scroll-indicator">
+        <button class="scroll-indicator" id="scroll-indicator" aria-label="Scroll to about section">
             <div class="scroll-arrow"></div>
             <span>Scroll Down</span>
-        </div>
-        
+        </button>
         <!-- Particles Background -->
-        <div class="particles" id="particles"></div>
+        <div class="particles" id="particles" aria-hidden="true"></div>
     </section>
 
     <!-- About Section -->
@@ -76,26 +77,26 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Hello! I'm Alex Johnson</h3>
-                    <p>I'm a passionate full-stack developer with over 5 years of experience creating digital solutions that combine beautiful design with powerful functionality. My journey started with a Computer Science degree and has evolved through continuous learning and real-world projects.</p>
-                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or enjoying the great outdoors. I believe in writing clean, maintainable code and creating user experiences that truly matter.</p>
+                    <h3>Hello! I'm Adrin Neville</h3>
+                    <p>I'm a passionate developer and current Full Stack Development Intern with a strong focus on Python, MySQL, and modern web technologies. I love creating digital solutions that balance functionality with creativity, while continuously sharpening my skills.</p>
+                    <p>Beyond coding, I'm a Chennai boy at heart who enjoys good stories and exploring how technology can shape everyday life.</p>
                     <div class="about-stats">
                         <div class="stat">
-                            <h4 class="counter" data-target="50">0</h4>
+                            <h4 class="counter" data-target="5">0</h4>
                             <p>Projects Completed</p>
                         </div>
                         <div class="stat">
-                            <h4 class="counter" data-target="5">0</h4>
+                            <h4 class="counter" data-target="1">0</h4>
                             <p>Years Experience</p>
                         </div>
                         <div class="stat">
-                            <h4 class="counter" data-target="30">0</h4>
-                            <p>Happy Clients</p>
+                            <h4 class="counter" data-target="3">0</h4>
+                            <p>Hackathon Selections</p>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Workspace">
+                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Modern workspace with laptop and coding setup" loading="lazy">
                 </div>
             </div>
         </div>
@@ -111,42 +112,32 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>Python, MySQL, C++, JavaScript</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Programming skills: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
                         <i class="fab fa-react"></i>
                     </div>
-                    <h3>Frontend Development</h3>
-                    <p>React, Vue.js, HTML5, CSS3, JavaScript, TypeScript, Sass</p>
+                    <h3>Frameworks & Tools</h3>
+                    <p>React.js, Unreal Engine, Django</p>
                     <div class="skill-bar">
-                        <div class="skill-progress" data-skill="90"></div>
+                        <div class="skill-progress" data-skill="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Frameworks and tools: 80%"></div>
                     </div>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-server"></i>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3>Backend Development</h3>
-                    <p>Node.js, Python, Express, Django, REST APIs, GraphQL</p>
+                    <h3>Soft Skills</h3>
+                    <p>Teamwork, Leadership, Problem Solving</p>
                     <div class="skill-bar">
-                        <div class="skill-progress" data-skill="85"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Database & Cloud</h3>
-                    <p>MongoDB, PostgreSQL, MySQL, AWS, Firebase, Docker</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-skill="80"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>UI/UX Design</h3>
-                    <p>Figma, Adobe XD, Photoshop, Responsive Design, Prototyping</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-skill="75"></div>
+                        <div class="skill-progress" data-skill="85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Soft skills: 85%"></div>
                     </div>
                 </div>
             </div>
@@ -157,70 +148,28 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>Some of my recent work</p>
+                <h2>Featured Project</h2>
+                <p>Some of my work</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600" alt="E-Commerce Platform">
+                        <img src="Images/Pet.jpg" alt="Pet Analysis Project - Healthcare management application with IoT integration" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link">Live Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
+                                <a href="#" class="project-link" aria-label="View Pet Analysis Project Publication">Publication</a>
+                                <a href="#" class="project-link" aria-label="View Pet Analysis Project on GitHub">GitHub</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard built with React and Node.js.</p>
+                        <h3>Pet Analysis Using Cloud Computing & Web Development</h3>
+                        <p>Developed an application to manage pet healthcare, track progress, and schedule tasks. Features include live pet location monitoring and an integrated shopping platform for pet products.</p>
                         <div class="project-tech">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                            <span>Stripe</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Task Management App">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">Live Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
-                        <div class="project-tech">
-                            <span>Vue.js</span>
-                            <span>Firebase</span>
-                            <span>Vuex</span>
-                            <span>CSS3</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Weather Dashboard">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">Live Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Weather Dashboard</h3>
-                        <p>A responsive weather application with location-based forecasts, interactive maps, and detailed weather analytics.</p>
-                        <div class="project-tech">
-                            <span>JavaScript</span>
-                            <span>API</span>
-                            <span>Chart.js</span>
-                            <span>CSS3</span>
+                            <span>React.js</span>
+                            <span>Kotlin</span>
+                            <span>Blynk Cloud</span>
+                            <span>IoT Hardware</span>
                         </div>
                     </div>
                 </div>
@@ -233,12 +182,12 @@
         <div class="container">
             <div class="section-header">
                 <h2>Get In Touch</h2>
-                <p>Let's create something amazing together</p>
+                <p>Let's build something awesome together</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Let's Talk</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    <p>I'm always open to new opportunities and exciting collaborations. Whether it's a project idea or just to connect, feel free to reach out.</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon email-icon">
@@ -246,7 +195,7 @@
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>alex.johnson@email.com</p>
+                                <p>adrinneville11@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -255,7 +204,7 @@
                             </div>
                             <div>
                                 <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
+                                <p>+91 97909 82167</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -264,38 +213,41 @@
                             </div>
                             <div>
                                 <h4>Location</h4>
-                                <p>San Francisco, CA</p>
+                                <p>Chennai, India</p>
                             </div>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link github-link">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/AdrinNeville" target="_blank" class="social-link github-link">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <span class="sr-only">GitHub Profile</span>
                         </a>
-                        <a href="#" class="social-link linkedin-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-link twitter-link">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://www.linkedin.com/in/adrin-neville-216726250" target="_blank" class="social-link linkedin-link">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            <span class="sr-only">LinkedIn Profile</span>
                         </a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contact-form">
+                    <form id="contact-form" novalidate>
                         <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
+                            <label for="name" class="sr-only">Your Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required aria-required="true">
                             <span class="form-bar"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
+                            <label for="email" class="sr-only">Your Email</label>
+                            <input type="email" id="email" placeholder="Your Email" required aria-required="true">
                             <span class="form-bar"></span>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" placeholder="Subject" required>
+                            <label for="subject" class="sr-only">Subject</label>
+                            <input type="text" id="subject" placeholder="Subject" required aria-required="true">
                             <span class="form-bar"></span>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                            <label for="message" class="sr-only">Your Message</label>
+                            <textarea id="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
                             <span class="form-bar"></span>
                         </div>
                         <button type="submit" class="btn-primary glow-btn">
@@ -311,10 +263,17 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Alex Johnson. All rights reserved. | Made with <i class="fas fa-heart"></i> and lots of coffee</p>
+            <p>&copy; 2025 Adrin Neville. All rights reserved. | Made with <i class="fas fa-heart" aria-hidden="true"></i> and lots of coffee</p>
         </div>
     </footer>
 
+    <noscript>
+        <style>
+            .typing-text { opacity: 1 !important; }
+            .fade-in-up { opacity: 1 !important; transform: translateY(0) !important; }
+            .skill-progress { width: 90% !important; }
+        </style>
+    </noscript>
     <script src="script.js"></script>
 </body>
 </html>
