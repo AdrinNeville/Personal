@@ -679,17 +679,6 @@ body.light-theme .skill-bar {
     background: #e0e0e0;
 }
 
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #64ffda, #4fd1c7);
-    border-radius: 3px;
-    width: 0;
-    transition: width 1.5s ease;
-}
-
-body.light-theme .skill-progress {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-}
 
 /* Projects Section */
 .projects {
