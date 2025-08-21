@@ -404,7 +404,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set up observers
     const sections = document.querySelectorAll('.about, .skills');
-    sections.forEach(section => observer.observe(section));
+    sections.forEach(section => observer.observe(document.querySelector('.projects'));
+
     
     // Create particles periodically (only if motion is not reduced)
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
