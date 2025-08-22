@@ -131,6 +131,13 @@ body.light-theme .navbar {
     -webkit-text-fill-color: transparent;
 }
 
+body.light-theme .logo h2 {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .logo a {
     text-decoration: none;
     transition: opacity 0.2s ease;
@@ -995,6 +1002,12 @@ body.light-theme .contact-item p {
     min-width: 44px;
 }
 
+body.light-theme .social-link {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
 .social-link:hover,
 .social-link:focus {
     transform: translateY(-3px);
@@ -1024,6 +1037,34 @@ body.light-theme .contact-item p {
 
 .instagram-link:hover,
 .instagram-link:focus {
+    background: #e4405f;
+    border-color: #e4405f;
+    color: white;
+}
+
+body.light-theme .github-link:hover,
+body.light-theme .github-link:focus {
+    background: #333;
+    border-color: #333;
+    color: white;
+}
+
+body.light-theme .linkedin-link:hover,
+body.light-theme .linkedin-link:focus {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: white;
+}
+
+body.light-theme.twitter-link:hover,
+body.light-theme .twitter-link:focus {
+    background: #1da1f2;
+    border-color: #1da1f2;
+    color: white;
+}
+
+body.light-theme .instagram-link:hover,
+body.light-theme .instagram-link:focus {
     background: #e4405f;
     border-color: #e4405f;
     color: white;
