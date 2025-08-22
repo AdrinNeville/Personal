@@ -235,7 +235,6 @@ body.light-theme .nav-link {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #000, #1a1a1a);
-    margin-bottom: 120px;
 }
 
 body.light-theme .hero {
