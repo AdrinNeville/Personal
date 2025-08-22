@@ -303,7 +303,8 @@ body.light-theme .hero {
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-tertiary {
     padding: 1rem 2rem;
     border-radius: 50px;
     font-weight: 600;
@@ -320,8 +321,8 @@ body.light-theme .hero {
 }
 
 .btn-primary {
-    background: white;
-    color: #667eea;
+    background: transparent;
+    color: white;
     border-color: white;
 }
 
@@ -330,11 +331,16 @@ body.light-theme .hero {
     color: white;
     border: 2px solid white;
 }
+.btn-tertiary {
+    background: transparent;
+    color: white;
+    border: 2px solid ;
+}
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: transparent;
-    color: white;
+    background: white;
+    color: black;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
 }
@@ -342,9 +348,17 @@ body.light-theme .hero {
 .btn-secondary:hover,
 .btn-secondary:focus {
     background: white;
-    color: #667eea;
+    color: black;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+}
+.btn-tertiary:hover,
+.btn-tertiary:focus {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
 }
 
 .hero-visual {
@@ -1022,7 +1036,7 @@ body.light-theme .contact-item p {
 }
 
 body.light-theme .contact-form {
-    background: #f8f9fa;
+    background: linear-gradient(45deg ,#667eea, #764ba2); ;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -1289,7 +1303,8 @@ body.light-theme .footer {
     }
     
     .btn-primary,
-    .btn-secondary {
+    .btn-secondary,
+    .btn-tertiary {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
         width: 100%;
@@ -1362,7 +1377,8 @@ body.light-theme .footer {
     }
     
     .btn-primary,
-    .btn-secondary {
+    .btn-secondary,
+    .btn-tertiary {
         width: 100%;
         max-width: 280px;
     }
@@ -1407,6 +1423,7 @@ body.light-theme .footer {
 @media (prefers-contrast: high) {
     .btn-primary,
     .btn-secondary,
+    .btn-tertiary,
     .project-link,
     .social-link {
         border-width: 3px;
