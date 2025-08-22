@@ -136,9 +136,10 @@ body.light-theme .navbar {
     transition: opacity 0.2s ease;
 }
 
-.logo a:hover,
-.logo a:focus {
+.logo a:hover h2,
+.logo a:focus h2 {
     opacity: 0.8;
+    color: #64ffda;
 }
 
 .nav-menu {
