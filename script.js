@@ -220,7 +220,7 @@ function handleFormSubmit(e) {
     const message = document.getElementById('message').value;
     
     // Enhanced form validation
-    if (!name || !email || !subject || !message) {
+    if (!name || !email ||  !message) {
         showNotification('Please fill in all fields', 'error');
         // Focus first empty field
         const firstEmpty = contactForm.querySelector('input:invalid, textarea:invalid');
