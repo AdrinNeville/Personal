@@ -235,6 +235,7 @@ body.light-theme .nav-link {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #000, #1a1a1a);
+    margin-bottom: 120px;
 }
 
 body.light-theme .hero {
@@ -497,6 +498,7 @@ body.light-theme .section-header p {
 .about {
     background: rgba(255, 255, 255, 0.02);
     border-top: 1px solid rgba(100, 255, 218, 0.1);
+    padding: 100px 0;
 }
 
 body.light-theme .about {
@@ -592,6 +594,7 @@ body.light-theme .stat-item p {
 .skills {
     background: rgba(255, 255, 255, 0.02);
     border-top: 1px solid rgba(100, 255, 218, 0.1);
+    padding: 100px 0;
 }
 
 body.light-theme .skills {
@@ -706,11 +709,13 @@ body.light-theme .skill-bar {
 .projects {
     background: rgba(255, 255, 255, 0.02);
     border-top: 1px solid rgba(100, 255, 218, 0.1);
+    padding: 100px 0;
 }
 
 body.light-theme .projects {
     background: #f8f9fa;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 100px 0;
 }
 
 .projects-grid {
@@ -870,6 +875,7 @@ body.light-theme .tech-tag {
 .contact {
     background: rgba(255, 255, 255, 0.02);
     border-top: 1px solid rgba(100, 255, 218, 0.1);
+    padding: 100px 50px;
 }
 
 body.light-theme .contact {
