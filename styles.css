@@ -66,8 +66,7 @@ body.light-theme {
 
 /* Theme Toggle */
 .theme-toggle {
-    position: fixed;
-    top: 20px;
+    position: static;
     right: 20px;
     width: 50px;
     height: 50px;
@@ -85,13 +84,41 @@ body.light-theme {
     color: #64ffda;
 }
 
+body.light-theme .theme-toggle {
+    position: static;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #667eea;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: #667eea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #667eea;
+}
+
 .theme-toggle:hover {
     transform: scale(1.1);
     background: rgba(100, 255, 218, 0.2);
 }
+body.light-theme .theme-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(102, 126, 234, 0.2);
+}
 
 .theme-toggle:focus {
     outline: 3px solid #64ffda;
+    outline-offset: 2px;
+}
+
+body.light-theme .theme-toggle:focus {
+    outline: 3px solid #667eea;
     outline-offset: 2px;
 }
 
@@ -214,7 +241,14 @@ body.light-theme .nav-link {
     transition: 0.3s;
     border-radius: 2px;
 }
-
+body.light-theme .hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background:#667eea;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
 .hamburger.active .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -326,47 +360,41 @@ body.light-theme .hero {
     min-height: 44px;
     border: 2px solid transparent;
     cursor: pointer;
-}
-
-.btn-primary {
-    background: transparent;
+    background: linear-gradient(45deg, #64ffda, #00bcd4);
     color: white;
     border-color: white;
 }
 
-.btn-secondary {
+body.light-theme .btn-primary,
+body.light-theme .btn-secondary,
+body.light-theme .btn-tertiary {
     background: transparent;
     color: white;
     border: 2px solid white;
 }
-.btn-tertiary {
-    background: transparent;
-    color: white;
-    border: 2px solid ;
-}
 
 .btn-primary:hover,
-.btn-primary:focus {
-    background: white;
-    color: black;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
-}
-
+.btn-primary:focus,
 .btn-secondary:hover,
-.btn-secondary:focus {
-    background: white;
-    color: black;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
-}
+.btn-secondary:focus,
 .btn-tertiary:hover,
 .btn-tertiary:focus {
     background: white;
     color: black;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
-    border: 2px solid white;
+}
+
+body.light-theme .btn-primary:hover,
+body.light-theme .btn-primary:focus,
+body.light-theme .btn-secondary:hover,
+body.light-theme .btn-secondary:focus,
+body.light-theme .btn-tertiary:hover,
+body.light-theme .btn-tertiary:focus {
+    background: white;
+    color: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .hero-visual {
@@ -467,7 +495,7 @@ body.light-theme .hero {
 }
 
 body.light-theme .section-header h2 {
-    color: #333;
+    color: #333;    
 }
 
 .section-header h2::after {
@@ -480,6 +508,10 @@ body.light-theme .section-header h2 {
     height: 4px;
     background: linear-gradient(45deg, #64ffda, #4fd1c7);
     border-radius: 2px;
+}
+
+body.light-theme .section-header h2::after {
+    background: linear-gradient(45deg, #667eea, #764ba2);
 }
 
 .section-header p {
@@ -689,21 +721,6 @@ body.light-theme .skill-card h3 {
 body.light-theme .skill-card p {
     color: #666;
 }
-
-.skill-bar {
-    width: 100%;
-    height: 6px;
-    background: rgba(100, 255, 218, 0.2);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 1rem;
-}
-
-body.light-theme .skill-bar {
-    background: #e0e0e0;
-}
-
-
 /* Projects Section */
 .projects {
     background: rgba(255, 255, 255, 0.02);
