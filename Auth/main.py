@@ -4,6 +4,14 @@ from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from pydantic import BaseModel
+from motor.motor_asyncio import AsyncIOMotorClient
+
+MONGO_URI = "mongodb://localhost:27017"
+client = AsyncIOMotorClient(MONGO_URI)
+
+db = client["mydatabase"]   # choose a database
+collection = db["contacts"] # choose a collection
+
 
 # Database setup
 DATABASE_URL = "sqlite:///./contact.db"
@@ -35,7 +43,7 @@ app = FastAPI()
 # Allow CORS (important for frontend to connect)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["file:///C:/Users/adrin/Desktop/Adrin%20Neville/Personal/index.html?name=ada&email=adrinneville11%40gmail.com#contact"],  # In production, replace with your frontend URL
+    allow_origins=["http://127.0.0.1:3000"],  # In production, replace with your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -64,3 +72,10 @@ async def create_contact(contact: ContactCreate, db: Session = Depends(get_db)):
 @app.get("/contacts")
 async def get_contacts(db: Session = Depends(get_db)):
     return db.query(Contact).all()
+
+@app.get("/contact/{contact_id}")
+async def get_contact(contact_id: int, db: Session = Depends(get_db)):
+    contact = db.query(Contact).filter(Contact.id == contact_id).first()
+    if not contact:
+        raise HTTPException(status_code=404, detail="Contact not found")
+    return contact
