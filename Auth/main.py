@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from motor.motor_asyncio import AsyncIOMotorClient
 
@@ -32,8 +32,8 @@ async def list_contacts():
 
 
 @app.get("/contact/{contact_id}")
-async def get_contact(contact_id: int, db: Session = Depends(get_db)):
-    contact = db.query(Contact).filter(Contact.id == contact_id).first()
-    if not contact:
-        raise HTTPException(status_code=404, detail="Contact not found")
-    return contact
+async def get_contact(contact_id: str):
+    doc = await contacts.find_one({"_id": contact_id})
+    if doc:
+        doc["_id"] = str(doc["_id"])  # convert ObjectId to string
+        return doc
