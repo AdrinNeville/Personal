@@ -273,7 +273,6 @@ async function handleFormSubmit(e) {
     }
 }
 
-
 // Notification System
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');

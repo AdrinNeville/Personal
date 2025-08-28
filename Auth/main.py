@@ -49,7 +49,7 @@ def get_db():
         db.close()
 
 @app.post("/contact")
-def create_contact(contact: ContactCreate, db: Session = Depends(get_db)):
+async def create_contact(contact: ContactCreate, db: Session = Depends(get_db)):
     db_contact = Contact(
         name=contact.name,
         email=contact.email,
@@ -62,5 +62,5 @@ def create_contact(contact: ContactCreate, db: Session = Depends(get_db)):
     return {"message": "Contact form submitted successfully!", "id": db_contact.id}
 
 @app.get("/contacts")
-def get_contacts(db: Session = Depends(get_db)):
+async def get_contacts(db: Session = Depends(get_db)):
     return db.query(Contact).all()
