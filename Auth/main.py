@@ -1,77 +1,35 @@
-from fastapi import FastAPI, Depends, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import Column, Integer, String, create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from fastapi import FastAPI
 from pydantic import BaseModel
 from motor.motor_asyncio import AsyncIOMotorClient
 
-MONGO_URI = "mongodb://localhost:27017"
-client = AsyncIOMotorClient(MONGO_URI)
-
-db = client["mydatabase"]   # choose a database
-collection = db["contacts"] # choose a collection
-
-
-# Database setup
-DATABASE_URL = "sqlite:///./contact.db"
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
-
-class Contact(Base):
-    __tablename__ = "contacts"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    email = Column(String, index=True)
-    subject = Column(String, index=True)
-    message = Column(String, index=True)
-
-Base.metadata.create_all(bind=engine)
-
-# Pydantic model
-class ContactCreate(BaseModel):
-    name: str
-    email: str
-    subject: str
-    message: str
-
-# FastAPI app
 app = FastAPI()
 
-# Allow CORS (important for frontend to connect)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000"],  # In production, replace with your frontend URL
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# --- Database setup ---
+MONGO_URI = "mongodb://localhost:27017"
+client = AsyncIOMotorClient(MONGO_URI)
+db = client["mydatabase"]
+contacts = db["contacts"]
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# --- Pydantic model ---
+class Contact(BaseModel):
+    name: str
+    email: str
+    message: str
 
+# --- Routes ---
 @app.post("/contact")
-async def create_contact(contact: ContactCreate, db: Session = Depends(get_db)):
-    db_contact = Contact(
-        name=contact.name,
-        email=contact.email,
-        subject=contact.subject,
-        message=contact.message,
-    )
-    db.add(db_contact)
-    db.commit()
-    db.refresh(db_contact)
-    return {"message": "Contact form submitted successfully!", "id": db_contact.id}
+async def create_contact(contact: Contact):
+    result = await contacts.insert_one(contact.dict())
+    return {"id": str(result.inserted_id), "message": "Contact saved!"}
 
 @app.get("/contacts")
-async def get_contacts(db: Session = Depends(get_db)):
-    return db.query(Contact).all()
+async def list_contacts():
+    docs = []
+    async for doc in contacts.find():
+        doc["_id"] = str(doc["_id"])  # convert ObjectId to string
+        docs.append(doc)
+    return docs
+
 
 @app.get("/contact/{contact_id}")
 async def get_contact(contact_id: int, db: Session = Depends(get_db)):
