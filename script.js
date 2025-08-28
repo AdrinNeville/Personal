@@ -211,51 +211,68 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Form Submission
-function handleFormSubmit(e) {
+// Updated handleFormSubmit to send data to FastAPI backend
+
+async function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
-    
-    // Enhanced form validation
+
+    // Validation
     if (!name || !email || !message) {
-        showNotification('Please fill in all fields', 'error');
-        // Focus first empty field
-        const firstEmpty = contactForm.querySelector('input:invalid, textarea:invalid');
-        if (firstEmpty) firstEmpty.focus();
+        showNotification('Please fill in all required fields', 'error');
         return;
     }
-    
-    // Email validations
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         showNotification('Please enter a valid email address', 'error');
-        document.getElementById('email').focus();
         return;
     }
-    
-    // Simulate form submission
+
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
-    
-    setTimeout(() => {
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to send message");
+        }
+
+        await response.json();
+
         submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
         showNotification('Message sent successfully!', 'success');
         contactForm.reset();
-        
-        // Announce success to screen readers
         announceToScreenReader('Message sent successfully!');
-        
+    } catch (error) {
+        console.error(error);
+        showNotification('Something went wrong. Please try again later.', 'error');
+    } finally {
         setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }, 2000);
-    }, 2000);
+    }
 }
+
 
 // Notification System
 function showNotification(message, type = 'info') {
