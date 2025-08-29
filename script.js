@@ -188,11 +188,6 @@ const observer = new IntersectionObserver((entries) => {
                 });
             }
             
-            // Animate skill bars
-            if (entry.target.classList.contains('skills')) {
-                animateSkillBars(entry.target);
-            }
-            
             // Add fade-in animation to cards
             const cards = entry.target.querySelectorAll('.skill-card, .project-card');
             cards.forEach((card, index) => {

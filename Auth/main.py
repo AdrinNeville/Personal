@@ -36,6 +36,9 @@ async def create_contact(contact: Contact):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
 
 @app.get("/contacts")
 async def list_contacts():
