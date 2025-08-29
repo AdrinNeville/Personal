@@ -366,11 +366,16 @@ body.light-theme .hero {
 }
 
 body.light-theme .btn-primary,
-body.light-theme .btn-secondary,
-body.light-theme .btn-tertiary {
+body.light-theme .btn-secondary{
     background: transparent;
     color: white;
     border: 2px solid white;
+}
+
+body.light-theme .btn-tertiary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
 }
 
 .btn-primary:hover,
@@ -388,13 +393,19 @@ body.light-theme .btn-tertiary {
 body.light-theme .btn-primary:hover,
 body.light-theme .btn-primary:focus,
 body.light-theme .btn-secondary:hover,
-body.light-theme .btn-secondary:focus,
-body.light-theme .btn-tertiary:hover,
-body.light-theme .btn-tertiary:focus {
+body.light-theme .btn-secondary:focus {
     background: white;
     color: #333;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .btn-tertiary:hover,
+body.light-theme .btn-tertiary:focus {
+    background: #667eea;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
 }
 
 .hero-visual {
@@ -1100,7 +1111,7 @@ body.light-theme .instagram-link:focus {
 }
 
 body.light-theme .contact-form {
-    background: linear-gradient(45deg ,#667eea, #764ba2); ;
+    background: transparent; ;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
