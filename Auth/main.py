@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from motor.motor_asyncio import AsyncIOMotorClient
 from bson import ObjectId
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
 
 app = FastAPI()
 
@@ -15,7 +17,7 @@ app.add_middleware(
 )
 
 # --- Database setup ---
-MONGO_URI = "mongodb://localhost:27017"
+MONGO_URI = os.getenv("mongo_url")
 client = AsyncIOMotorClient(MONGO_URI)
 db = client["mydatabase"]
 contacts = db["contacts"]
