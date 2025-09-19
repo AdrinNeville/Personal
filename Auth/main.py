@@ -8,7 +8,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000","http//:localhost:3000"],  # or restrict to your frontend URL
+    allow_origins=["*"],  # or restrict to your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,7 +36,7 @@ async def create_contact(contact: Contact):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/health")
+@app.get("/health/")
 async def health_check():
     return {"status": "ok"}
 
